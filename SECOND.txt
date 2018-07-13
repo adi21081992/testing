@@ -1,0 +1,139 @@
+***************************** Top of Data ******************************
+//MC00SCND JOB (T),'SECAB',CLASS=S,MSGCLASS=H,NOTIFY=&SYSUID            
+//********************************************************************  
+//S001   EXEC PGM=IEFBR14                                               
+//DD1  DD DSN=MC00.DS412W.SITEA.INT,DISP=(MOD,DELETE,DELETE)            
+//DD1  DD DSN=MC00.DS412W.SITEK.INT,DISP=(MOD,DELETE,DELETE)            
+//DD1  DD DSN=MC00.DS412W.SITEL.INT,DISP=(MOD,DELETE,DELETE)            
+//DD1  DD DSN=MC00.DS412W.SITEM.INT,DISP=(MOD,DELETE,DELETE)            
+//DD1  DD DSN=MC00.DS412W.SITEO.INT,DISP=(MOD,DELETE,DELETE)            
+//DD1  DD DSN=MC00.DS412W.SITEQ.INT,DISP=(MOD,DELETE,DELETE)            
+//DD1  DD DSN=MC00.DS412W.SITET.INT,DISP=(MOD,DELETE,DELETE)            
+//DD1  DD DSN=MC00.DS412W.SITEY.INT,DISP=(MOD,DELETE,DELETE)            
+//DD1  DD DSN=MC00.DS412W.SITEX.INT,DISP=(MOD,DELETE,DELETE)            
+//********************************************************************  
+//REXX01   EXEC PGM=IKJEFT01,DYNAMNBR=200                               
+//SYSEXEC  DD DSN=MC00.DS412W.BILCSR.PGCNT.JCL,DISP=SHR                 
+//SYSPRINT DD SYSOUT=*                                                  
+//SYSTSPRT DD SYSOUT=*                                                  
+//INFILE   DD DSN=MC00.DS412W.SITEA.SARU,DISP=SHR                       
+//OUTFILE  DD DSN=MC00.DS412W.SITEA.INT,                                
+//            DISP=(NEW,CATLG,DELETE),                                  
+//            SPACE=(TRK,(10,10),RLSE),                                 
+//            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800,DSORG=PS)              
+//SYSTSIN  DD *                                                         
+PROFILE NOPREFIX                                                        
+%DEEKXXX5 A,06,DS412W                                                   
+/*                                                                      
+//********************************************************************  
+//REXX02   EXEC PGM=IKJEFT01,DYNAMNBR=200                               
+//SYSEXEC  DD DSN=MC00.DS412W.BILCSR.PGCNT.JCL,DISP=SHR                 
+//SYSPRINT DD SYSOUT=*                                                  
+//SYSTSPRT DD SYSOUT=*                                                  
+//INFILE   DD DSN=MC00.DS412W.SITEK.SARU,DISP=SHR                       
+//OUTFILE  DD DSN=MC00.DS412W.SITEK.INT,                                
+//            DISP=(NEW,CATLG,DELETE),                                  
+//            SPACE=(TRK,(10,10),RLSE),                                 
+//            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800,DSORG=PS)              
+//SYSTSIN  DD *                                                         
+PROFILE NOPREFIX                                                        
+%DEEKXXX5 K,06,DS412W                                                   
+/*                                                                      
+//********************************************************************  
+//REXX03   EXEC PGM=IKJEFT01,DYNAMNBR=200                               
+//SYSEXEC  DD DSN=MC00.DS412W.BILCSR.PGCNT.JCL,DISP=SHR                 
+//SYSPRINT DD SYSOUT=*                                                  
+//SYSTSPRT DD SYSOUT=*                                                  
+//INFILE   DD DSN=MC00.DS412W.SITEL.SARU,DISP=SHR                       
+//OUTFILE  DD DSN=MC00.DS412W.SITEL.INT,                                
+//            DISP=(NEW,CATLG,DELETE),                                  
+//            SPACE=(TRK,(10,10),RLSE),                                 
+//            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800,DSORG=PS)              
+//SYSTSIN  DD *                                                         
+PROFILE NOPREFIX                                                        
+%DEEKXXX5 L,06,DS412W                                                   
+/*                                                                      
+//********************************************************************  
+//REXX04   EXEC PGM=IKJEFT01,DYNAMNBR=200                               
+//SYSEXEC  DD DSN=MC00.DS412W.BILCSR.PGCNT.JCL,DISP=SHR                 
+//SYSPRINT DD SYSOUT=*                                                  
+//SYSTSPRT DD SYSOUT=*                                                  
+//INFILE   DD DSN=MC00.DS412W.SITEM.SARU,DISP=SHR                       
+//OUTFILE  DD DSN=MC00.DS412W.SITEM.INT,                                
+//            DISP=(NEW,CATLG,DELETE),                                  
+//            SPACE=(TRK,(10,10),RLSE),                                 
+//            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800,DSORG=PS)              
+//SYSTSIN  DD *                                                         
+PROFILE NOPREFIX                                                        
+%DEEKXXX5 M,06,DS412W                                                   
+/*                                                                      
+//********************************************************************  
+//REXX05   EXEC PGM=IKJEFT01,DYNAMNBR=200                               
+//SYSEXEC  DD DSN=MC00.DS412W.BILCSR.PGCNT.JCL,DISP=SHR                 
+//SYSPRINT DD SYSOUT=*                                                  
+//SYSTSPRT DD SYSOUT=*                                                  
+//INFILE   DD DSN=MC00.DS412W.SITEO.SARU,DISP=SHR                       
+//OUTFILE  DD DSN=MC00.DS412W.SITEO.INT,                                
+//            DISP=(NEW,CATLG,DELETE),                                  
+//            SPACE=(TRK,(10,10),RLSE),                                 
+//            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800,DSORG=PS)              
+//SYSTSIN  DD *                                                         
+PROFILE NOPREFIX                                                        
+%DEEKXXX5 O,06,DS412W                                                   
+/*                                                                      
+//********************************************************************  
+//REXX06   EXEC PGM=IKJEFT01,DYNAMNBR=200                               
+//SYSEXEC  DD DSN=MC00.DS412W.BILCSR.PGCNT.JCL,DISP=SHR                 
+//SYSPRINT DD SYSOUT=*                                                  
+//SYSTSPRT DD SYSOUT=*                                                  
+//INFILE   DD DSN=MC00.DS412W.SITEQ.SARU,DISP=SHR                       
+//OUTFILE  DD DSN=MC00.DS412W.SITEQ.INT,                                
+//            DISP=(NEW,CATLG,DELETE),                                  
+//            SPACE=(TRK,(10,10),RLSE),                                 
+//            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800,DSORG=PS)              
+//SYSTSIN  DD *                                                         
+PROFILE NOPREFIX                                                        
+%DEEKXXX5 Q,06,DS412W                                                   
+/*                                                                      
+//********************************************************************  
+//REXX07   EXEC PGM=IKJEFT01,DYNAMNBR=200                               
+//SYSEXEC  DD DSN=MC00.DS412W.BILCSR.PGCNT.JCL,DISP=SHR                 
+//SYSPRINT DD SYSOUT=*                                                  
+//SYSTSPRT DD SYSOUT=*                                                  
+//INFILE   DD DSN=MC00.DS412W.SITET.SARU,DISP=SHR                       
+//OUTFILE  DD DSN=MC00.DS412W.SITET.INT,                                
+//            DISP=(NEW,CATLG,DELETE),                                  
+//            SPACE=(TRK,(10,10),RLSE),                                 
+//            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800,DSORG=PS)              
+//SYSTSIN  DD *                                                         
+PROFILE NOPREFIX                                                        
+%DEEKXXX5 T,06,DS412W                                                   
+/*                                                                      
+//********************************************************************  
+//REXX08   EXEC PGM=IKJEFT01,DYNAMNBR=200                               
+//SYSEXEC  DD DSN=MC00.DS412W.BILCSR.PGCNT.JCL,DISP=SHR                 
+//SYSPRINT DD SYSOUT=*                                                  
+//SYSTSPRT DD SYSOUT=*                                                  
+//INFILE   DD DSN=MC00.DS412W.SITEX.SARU,DISP=SHR                       
+//OUTFILE  DD DSN=MC00.DS412W.SITEX.INT,                                
+//            DISP=(NEW,CATLG,DELETE),                                  
+//            SPACE=(TRK,(10,10),RLSE),                                 
+//            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800,DSORG=PS)              
+//SYSTSIN  DD *                                                         
+PROFILE NOPREFIX                                                        
+%DEEKXXX5 X,06,DS412W                                                   
+/*                                                                      
+//********************************************************************  
+//REXX09   EXEC PGM=IKJEFT01,DYNAMNBR=200                               
+//SYSEXEC  DD DSN=MC00.DS412W.BILCSR.PGCNT.JCL,DISP=SHR                 
+//SYSPRINT DD SYSOUT=*                                                  
+//SYSTSPRT DD SYSOUT=*                                                  
+//INFILE   DD DSN=MC00.DS412W.SITEY.SARU,DISP=SHR                       
+//OUTFILE  DD DSN=MC00.DS412W.SITEY.INT,                                
+//            DISP=(NEW,CATLG,DELETE),                                  
+//            SPACE=(TRK,(10,10),RLSE),                                 
+//            DCB=(RECFM=FB,LRECL=80,BLKSIZE=800,DSORG=PS)              
+//SYSTSIN  DD *                                                         
+PROFILE NOPREFIX                                                        
+%DEEKXXX5 Y,06,DS412W                                                   
+/*                                                                      

@@ -1,0 +1,66 @@
+***************************** Top of Data ******************************
+//MC00FRST JOB (T,04M1),'SECAB',CLASS=S,MSGCLASS=H,NOTIFY=&SYSUID       
+//********************************************************************  
+//INTRDR   EXEC PGM=IEBGENER                                            
+//SYSIN     DD  DUMMY                                                   
+//SYSPRINT  DD  SYSOUT=*                                                
+//SYSUT1    DD  DSN=MC00.DS412W.BILCSR.PGCNT.JCL(MC0SARUA),             
+//         DISP=SHR                                                     
+//SYSUT2    DD  SYSOUT=(,INTRDR)                                        
+//*                                                                     
+//INTRDR   EXEC PGM=IEBGENER                                            
+//SYSIN     DD  DUMMY                                                   
+//SYSPRINT  DD  SYSOUT=*                                                
+//SYSUT1    DD  DSN=MC00.DS412W.BILCSR.PGCNT.JCL(MC0SARUK),             
+//         DISP=SHR                                                     
+//SYSUT2    DD  SYSOUT=(,INTRDR)                                        
+//*                                                                     
+//INTRDR   EXEC PGM=IEBGENER                                            
+//SYSIN     DD  DUMMY                                                   
+//SYSPRINT  DD  SYSOUT=*                                                
+//SYSUT1    DD  DSN=MC00.DS412W.BILCSR.PGCNT.JCL(MC0SARUL),             
+//         DISP=SHR                                                     
+//SYSUT2    DD  SYSOUT=(,INTRDR)                                        
+//*                                                                     
+//INTRDR   EXEC PGM=IEBGENER                                            
+//SYSIN     DD  DUMMY                                                   
+//SYSPRINT  DD  SYSOUT=*                                                
+//SYSUT1    DD  DSN=MC00.DS412W.BILCSR.PGCNT.JCL(MC0SARUM),             
+//         DISP=SHR                                                     
+//SYSUT2    DD  SYSOUT=(,INTRDR)                                        
+//*                                                                     
+//INTRDR   EXEC PGM=IEBGENER                                            
+//SYSIN     DD  DUMMY                                                   
+//SYSPRINT  DD  SYSOUT=*                                                
+//SYSUT1    DD  DSN=MC00.DS412W.BILCSR.PGCNT.JCL(MC0SARUO),             
+//         DISP=SHR                                                     
+//SYSUT2    DD  SYSOUT=(,INTRDR)                                        
+//*                                                                     
+//INTRDR   EXEC PGM=IEBGENER                                            
+//SYSIN     DD  DUMMY                                                   
+//SYSPRINT  DD  SYSOUT=*                                                
+//SYSUT1    DD  DSN=MC00.DS412W.BILCSR.PGCNT.JCL(MC0SARUQ),             
+//         DISP=SHR                                                     
+//SYSUT2    DD  SYSOUT=(,INTRDR)                                        
+//*                                                                     
+//INTRDR   EXEC PGM=IEBGENER                                            
+//SYSIN     DD  DUMMY                                                   
+//SYSPRINT  DD  SYSOUT=*                                                
+//SYSUT1    DD  DSN=MC00.DS412W.BILCSR.PGCNT.JCL(MC0SARUT),             
+//         DISP=SHR                                                     
+//SYSUT2    DD  SYSOUT=(,INTRDR)                                        
+//*                                                                     
+//INTRDR   EXEC PGM=IEBGENER                                            
+//SYSIN     DD  DUMMY                                                   
+//SYSPRINT  DD  SYSOUT=*                                                
+//SYSUT1    DD  DSN=MC00.DS412W.BILCSR.PGCNT.JCL(MC0SARUX),             
+//         DISP=SHR                                                     
+//SYSUT2    DD  SYSOUT=(,INTRDR)                                        
+//*                                                                     
+//INTRDR   EXEC PGM=IEBGENER                                            
+//SYSIN     DD  DUMMY                                                   
+//SYSPRINT  DD  SYSOUT=*                                                
+//SYSUT1    DD  DSN=MC00.DS412W.BILCSR.PGCNT.JCL(MC0SARUY),             
+//         DISP=SHR                                                     
+//SYSUT2    DD  SYSOUT=(,INTRDR)                                        
+**************************** Bottom of Data ****************************

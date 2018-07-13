@@ -1,0 +1,30 @@
+***************************** Top of Data ******************************
+//MC00SARA JOB (T,04M1),'SECAB',CLASS=S,MSGCLASS=H,NOTIFY=&SYSUID       
+//********************************************************************  
+/*ROUTE PRINT MU1.IOF                                                   
+/*XEQ MA1                                                               
+/*JOBPARM ROOM=04MQ                                                     
+//*                                                                     
+//S0001   EXEC PGM=IEFBR14                                              
+//*                                                                     
+//D2       DD  DSN=MC00.DS412W.SITEA.SARU,                              
+//             DISP=(MOD,DELETE,DELETE)                                 
+//*                                                                     
+//SARSPOOL EXEC PGM=SARBCH                                              
+//REPORT   DD  DSN=MC00.DS412W.SITEA.SARU,                              
+//             DISP=(MOD,CATLG,DELETE),                                 
+//             SPACE=(CYL,(10,10),RLSE),                                
+//             DCB=(RECFM=FBA,LRECL=133,BLKSIZE=1330,DSORG=PS)          
+//SYSPRINT DD  SYSOUT=*                                                 
+//SYSIN    DD  *                                                        
+/DBASE NAME=SA55.SARU                                                   
+/LIST ID=MU40A10A GEN=*                                                 
+/LIST ID=MU60A10A GEN=*                                                 
+/*                                                                      
+//*** NDM  DATASETS TO TEST                                             
+//SL06BSP  EXEC PROC=RB00B00,                                           
+//         PRTOUT=*,                                                    
+//         PRCSLIB=RB00.LP.PROCESS.PARMLIB,                             
+//         SLIB=MC00.DS412W.CABS.IMSNDM.PARMLIB,                        
+//         SMBR=SARCPYA                                                 
+**************************** Bottom of Data ****************************

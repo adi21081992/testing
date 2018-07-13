@@ -1,0 +1,78 @@
+/* REXX */                                                              
+PARSE ARG SITE ',' MONTH ',' UID                                        
+DO                                                                      
+OUT1.1 = '//MU40SRS'||SITE||' JOB (T,04M1),'SECAB',CLASS=S,MSGCLASS=H,' 
+OUT1.2 = '//             NOTIFY=&SYSUID'                                
+OUT1.3 = '/*ROUTE PRINT MU1.IOF'                                        
+OUT1.4 = '/*XEQ M'||SITE||'1'                                           
+OUT1.5 = '/*JOBPARM ROOM=04MQ'                                          
+OUT1.6 = '//*'                                                          
+OUT1.7 = '//S0001   EXEC PGM=IEFBR14'                                   
+OUT1.8 = '//D1      DD  DSN=MC00.'||UID||'.SITE'||SITE||'.CSR,'         
+OUT1.9 = '//             DISP=(MOD,DELETE,DELETE)'                      
+OUT1.10 = '//D2      DD  DSN=MC00.'||UID||'.SITE'||SITE||'.BIL,'        
+OUT1.11 = '//             DISP=(MOD,DELETE,DELETE)'                     
+OUT1.12 ='//*'                                                          
+OUT1.13='//SARSPOOL EXEC PGM=SARBCH'                                    
+OUT1.14='//CSR      DD  DSN=MC00.'||UID||'.SITE'||SITE||'.CSR,'         
+OUT1.15='//             DISP=(MOD,CATLG,DELETE),'                       
+OUT1.16='//             SPACE=(CYL,(10,10),RLSE),'                      
+OUT1.17='//             DCB=(RECFM=FBA,LRECL=133,BLKSIZE=1330,DSORG=PS)'
+OUT1.18='//BIL      DD  DSN=MC00.'||UID||'.SITE'||SITE||'.BIL,'         
+OUT1.19='//             DISP=(MOD,CATLG,DELETE),'                       
+OUT1.20='//             SPACE=(CYL,(10,10),RLSE),'                      
+OUT1.21='//             DCB=(RECFM=FBA,LRECL=133,BLKSIZE=1330,DSORG=PS)'
+OUT1.22='//SYSPRINT DD  SYSOUT=*'                                       
+OUT1.23='//SYSIN    DD  *'                                              
+OUT1.24='/DBASE NAME=SA55.SARU'                                         
+END                                                                     
+"EXECIO * DISKR INFILE (STEM LINE1. FINIS"                              
+I = 24                                                                  
+JOBID1 = ' '                                                            
+JOBID = ' '                                                             
+DO J = 1 TO LINE1.0                                                     
+   IF SUBSTR(LINE1.J,35,7) = 'MU40A10' & ,                              
+      SUBSTR(LINE1.J,65,2) = MONTH THEN                                 
+   DO                                                                   
+      JOBID = SUBSTR(LINE1.J,44,8)                                      
+      IF ( JOBID /== JOBID1 ) THEN                                      
+       DO                                                               
+         GEN1 = SUBSTR(LINE1.J,53,5)                                    
+         SEQ1 = SUBSTR(LINE1.J,63,1)                                    
+         JOBID1 = JOBID                                                 
+         I = I + 1                                                      
+OUT1.I = '/PRINT ID=MU40A10'||SITE||' '||'GEN='||GEN1||' '||'SEQ='||SEQ1||' ',
+          ||'DDNAME=CSR'                                                
+       END                                                              
+   END                                                                  
+   IF SUBSTR(LINE1.J,35,7) = 'MU60A10' & ,                              
+      SUBSTR(LINE1.J,65,2) = MONTH THEN                                 
+   DO                                                                   
+      JOBID = SUBSTR(LINE1.J,44,8)                                      
+      IF ( JOBID /== JOBID1 ) THEN                                      
+       DO                                                               
+         GEN1 = SUBSTR(LINE1.J,53,5)                                    
+         SEQ1 = SUBSTR(LINE1.J,63,1)                                    
+         JOBID1 = JOBID                                                 
+         I = I + 1                                                      
+OUT1.I = '/PRINT ID=MU60A10'||SITE||' '||'GEN='||GEN1||' '||'SEQ='||SEQ1||' ',   END                                                                  
+END                                                                     
+I = I + 1                                                               
+DO                                                                      
+OUT1.I = '/*'                                                           
+I = I + 1                                                               
+OUT1.I = '//SL06BSP  EXEC PROC=RB00B00,PRTOUT=*,'                       
+I = I + 1                                                               
+OUT1.I = '//         PRCSLIB=RB00.LP.PROCESS.PARMLIB,'                  
+I = I + 1                                                               
+OUT1.I = '//         SLIB=MC00.'||UID||'.CABS.IMSNDM.PARMLIB,' ,        
+          ||'SMBR=SAR40CP'||SITE                                        
+END                                                                     
+"EXECIO * DISKW OUTFILE (STEM OUT1. FINIS"                              
+"FREE F(INFILE OUTFILE)"                                                
+ADDRESS TSO                                                             
+"SUBMIT" 'MC00.'||UID||'.SITE'||SITE||'.INT'                            
+EXIT                                                                    
+
+          ||'DDNAME=BIL'                                                
+       END                                                              
